@@ -8,7 +8,6 @@
 //--------------------------------------------------------------------
 
 #include <Utils/Limits.h>
-#include <limits.h>
 #include <float.h>
 
 namespace OpenEngine {

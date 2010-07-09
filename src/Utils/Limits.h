@@ -12,6 +12,8 @@
 
 #include <Core/Exceptions.h>
 
+#include <climits>
+
 namespace OpenEngine {
 namespace Utils {
 

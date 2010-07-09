@@ -13,7 +13,11 @@
 #if defined(_WIN32)
   #include <time.h>
 #else
+#if defined(WII)
+  #include <time.h>
+#else
   #include <sys/time.h>
+#endif
 #endif
 
 #endif // _OE_META_TIME_H_

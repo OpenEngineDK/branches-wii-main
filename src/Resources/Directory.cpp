@@ -4,6 +4,7 @@
 
 // see: http://www.gnu.org/software/libc/manual/html_node/File-System-Interface.html
 #include <sys/stat.h> //includes mkdir
+#include <sys/unistd.h>
 //#include <sys/types.h>
 #include <dirent.h>
 #include <iostream>

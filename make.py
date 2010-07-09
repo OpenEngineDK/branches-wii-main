@@ -19,6 +19,7 @@ build_dir = path.join(os.getcwd(), "build")
 
 def commands():
     return ((build,   "all"),
+            (wiibuild,"wii"),
             (test,    "test"),
             (testv,   "testv"),
             (rebuild, "rebuild"),
@@ -28,6 +29,21 @@ def commands():
             (etags,   "etags"),
             (help,    "help"),
             (make,    None))
+
+def wiibuild():
+    """
+    wii -- set up wii build system and compile for wii
+    """
+    prepare()
+    owd = os.getcwd()
+    os.chdir(build_dir)
+    if not path.isfile(path.join(build_dir, "Makefile")):
+        execute("cmake -DWII= -DCMAKE_TOOLCHAIN_FILE=../toolchain-ppc.cmake ../")
+    sys_exec_make("all")
+    # elf2dol = path.join(os.environ["DEVKITPPC"], "bin", "elf2dol")
+    # execute(elf2dol)
+    os.chdir(owd)
+    
 
 def build():
     """

@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <limits.h>
 #include <iomanip>
+#include <sys/time.h>
 
 #if defined(_WIN32)
     #include <Windows.h>
