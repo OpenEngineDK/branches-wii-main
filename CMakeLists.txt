@@ -29,6 +29,21 @@ SET(OE_EXTENSIONS_DIR "${OpenEngine_SOURCE_DIR}/extensions")
 
 SET(CMAKE_CONF_DIR ${OE_CONF_DIR}/cmake)
 
+# Include configuration files
+INCLUDE(${CMAKE_CONF_DIR}/SetupOEBuild.cmake)
+INCLUDE(${CMAKE_CONF_DIR}/SetupDebug.cmake)
+INCLUDE(${CMAKE_CONF_DIR}/SetupGCC.cmake)
+INCLUDE(${CMAKE_CONF_DIR}/SetupWii.cmake)
+INCLUDE(${CMAKE_CONF_DIR}/SetupVS.cmake)
+
+IF(MINGW)
+	INCLUDE(${CMAKE_CONF_DIR}/FindPthread.cmake)
+	INCLUDE(${CMAKE_CONF_DIR}/FindBoost.cmake)
+ELSE(MINGW)
+	INCLUDE(${CMAKE_CONF_DIR}/SetupBoost.cmake)
+ENDIF(MINGW)
+
+
 # if DEPS flag is set we only build the external source dependencies.
 IF (DEPS)
 INCLUDE(${CMAKE_CONF_DIR}/SetupDependencies.cmake)
@@ -44,20 +59,6 @@ SUBDIRS(
   ${OE_SOURCE_DIR}
 #  ${OE_TESTS_DIR}
 )
-
-# Include configuration files
-INCLUDE(${CMAKE_CONF_DIR}/SetupOEBuild.cmake)
-INCLUDE(${CMAKE_CONF_DIR}/SetupDebug.cmake)
-INCLUDE(${CMAKE_CONF_DIR}/SetupGCC.cmake)
-INCLUDE(${CMAKE_CONF_DIR}/SetupWii.cmake)
-INCLUDE(${CMAKE_CONF_DIR}/SetupVS.cmake)
-
-IF(MINGW)
-	INCLUDE(${CMAKE_CONF_DIR}/FindPthread.cmake)
-	INCLUDE(${CMAKE_CONF_DIR}/FindBoost.cmake)
-ELSE(MINGW)
-	INCLUDE(${CMAKE_CONF_DIR}/SetupBoost.cmake)
-ENDIF(MINGW)
 
 INCLUDE(${CMAKE_CONF_DIR}/SetupDependencies.cmake)
 INCLUDE(${CMAKE_CONF_DIR}/SetupExtensionsAndProjects.cmake)

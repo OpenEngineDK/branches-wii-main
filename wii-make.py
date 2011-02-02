@@ -107,7 +107,7 @@ def deps():
     owd = os.getcwd()
     os.chdir(deps_dir)
     if not path.isfile(path.join(deps_dir, "Makefile")):
-        execute("cmake -DDEPS=true ../")
+        execute("cmake -DDEPS=true -DWII= -DCMAKE_TOOLCHAIN_FILE=../toolchain-ppc.cmake ../")
     sys_exec_make("all")
     os.chdir(owd)
 
@@ -141,9 +141,9 @@ def prepare():
 
 def sys_exec_cmake():
     if system("win"):
-        execute("cmake -G \"MinGW Makefiles\" ../")
+        execute("cmake -G \"MinGW Makefiles\" -DWII= -DCMAKE_TOOLCHAIN_FILE=../toolchain-ppc.cmake ../")
     else: 
-        execute("cmake ../")
+        execute("cmake -DWII= -DCMAKE_TOOLCHAIN_FILE=../toolchain-ppc.cmake ../")
 
 def sys_exec_make(target):
     if system("win"):
